@@ -1,4 +1,4 @@
-package com.sap.cc.springbootskeleton;
+package com.sap.cc.movies;
 
 import java.util.List;
 import java.util.stream.Collectors;

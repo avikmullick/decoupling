@@ -1,4 +1,4 @@
-package com.sap.cc.springbootskeleton;
+package com.sap.cc.movies;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
