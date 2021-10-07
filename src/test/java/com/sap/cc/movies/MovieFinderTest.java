@@ -3,9 +3,9 @@ package com.sap.cc.movies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static com.sap.cc.movies.MovieFixtures.MOVIES;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MovieFinderTest {
@@ -13,21 +13,16 @@ class MovieFinderTest {
     MovieFinder movieFinder = new MovieFinder();
     InMemoryMovieStorage movieStorage = new InMemoryMovieStorage();
 
-    List<Movie> movies = Arrays.asList(
-            new Movie("The Godfather", "Francis Ford Coppola"),
-            new Movie("The Godfather: Part 2", "Francis Ford Coppola"),
-            new Movie("The Thing", "John Carpenter"));
-
     @BeforeEach
     void setUp() {
-        movies.forEach(movieStorage::save);
+        MOVIES.forEach(movieStorage::save);
     }
 
     @Test
     void getAllMoviesShouldReturnAllMovies() {
         List<Movie> allMovies = movieFinder.getAllMovies();
 
-        assertThat(allMovies).hasSameSizeAs(movies);
+        assertThat(allMovies).hasSameSizeAs(MOVIES);
     }
 
     @Test
@@ -54,7 +49,7 @@ class MovieFinderTest {
     void findMoviesByTitle_calledWithThe_ReturnsEveryMovieContainingThe() {
         List<Movie> moviesWithThe = movieFinder.findMoviesByTitle("The");
 
-        assertThat(moviesWithThe).hasSameSizeAs(movies);
+        assertThat(moviesWithThe).hasSameSizeAs(MOVIES);
     }
 
     @Test
