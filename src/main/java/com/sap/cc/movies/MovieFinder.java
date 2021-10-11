@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class MovieFinder {
 
-    InMemoryMovieStorage movieStorage;
+    private InMemoryMovieStorage movieStorage;
 
     public MovieFinder() {
         this.movieStorage = new InMemoryMovieStorage();
