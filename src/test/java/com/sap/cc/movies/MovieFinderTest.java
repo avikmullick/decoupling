@@ -11,11 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MovieFinderTest {
 
     MovieFinder movieFinder = new MovieFinder();
-    InMemoryMovieStorage movieStorage = new InMemoryMovieStorage();
 
     @BeforeEach
     void setUp() {
-        MOVIES.forEach(movieStorage::save);
+        MOVIES.forEach(movieFinder.getMovieStorage()::save);
     }
 
     @Test
