@@ -11,9 +11,9 @@ public class InMemoryMovieStorage {
     }
 
     public Movie save(final Movie movie) {
-        boolean isBookIdEmptyOrNonExisting = movie.getId() == null || !movies.containsKey(movie.getId());
+        boolean isIdEmptyOrNonexistent = movie.getId() == null || !movies.containsKey(movie.getId());
 
-        if (isBookIdEmptyOrNonExisting) {
+        if (isIdEmptyOrNonexistent) {
             Long id = movies.size() + 1L;
             movie.setId(id);
         }
