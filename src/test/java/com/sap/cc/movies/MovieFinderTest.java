@@ -2,6 +2,7 @@ package com.sap.cc.movies;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -10,11 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MovieFinderTest {
 
-    MovieFinder movieFinder = new MovieFinder();
+    MovieStorageStub movieStorageStub=new MovieStorageStub();
+    MovieStorage movieStorageMock = Mockito.mock(MovieStorage.class);
+    MovieFinder movieFinder = new MovieFinder(movieStorageMock);
+
 
     @BeforeEach
     void setUp() {
-        MOVIES.forEach(movieFinder.getMovieStorage()::save);
+        Mockito.when(movieStorageMock.getAll()).thenReturn(movieStorageStub.getAll());
+        movieStorageStub.getAll().forEach(movieFinder.getMovieStorage()::save);
+
     }
 
     @Test

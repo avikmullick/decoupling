@@ -5,10 +5,11 @@ import java.util.stream.Collectors;
 
 public class MovieFinder {
 
-    private InMemoryMovieStorage movieStorage;
 
-    public MovieFinder() {
-        this.movieStorage = new InMemoryMovieStorage();
+    private MovieStorage movieStorage;
+
+    public MovieFinder(MovieStorage movieStorage) {
+        this.movieStorage =movieStorage;
     }
 
     public List<Movie> findMoviesByDirector(String director) {
@@ -23,11 +24,15 @@ public class MovieFinder {
                 .collect(Collectors.toList());
     }
 
+    public void setMovieStorage(MovieStorage movieStorage) {
+        this.movieStorage = movieStorage;
+    }
+
     public List<Movie> getAllMovies() {
         return movieStorage.getAll();
     }
 
-    public InMemoryMovieStorage getMovieStorage() {
+    public MovieStorage getMovieStorage() {
         return movieStorage;
     }
 
